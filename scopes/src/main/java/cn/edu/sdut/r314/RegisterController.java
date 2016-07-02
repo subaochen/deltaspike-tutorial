@@ -5,8 +5,15 @@
  */
 package cn.edu.sdut.r314;
 
+import java.io.Serializable;
+import javax.enterprise.context.ConversationScoped;
+import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import org.apache.deltaspike.core.api.scope.ViewAccessScoped;
+import org.apache.deltaspike.core.api.scope.WindowScoped;
 
 /**
  *
@@ -14,7 +21,7 @@ import javax.inject.Named;
  */
 @Named
 
-public class RegisterController {
+public class RegisterController implements Serializable{
     @Inject User user;
     
     public String step1(){
@@ -22,7 +29,7 @@ public class RegisterController {
     }
     
     public String step2(){
-        return "step3";
+        return "confirm";
     }
     
     public String confirm(){

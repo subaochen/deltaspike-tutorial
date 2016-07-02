@@ -5,11 +5,19 @@
  */
 package cn.edu.sdut.r314;
 
+import java.io.Serializable;
+import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
+import org.apache.deltaspike.core.api.scope.WindowScoped;
+
 /**
  *
  * @author subaochen
  */
-public class User {
+@Named
+@WindowScoped
+public class User implements Serializable {
     String username;
     String password;
     String email;

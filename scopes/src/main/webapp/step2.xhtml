@@ -13,12 +13,12 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
-        from step1,username:#{registerController.user.username},password:#{registerController.user.password}<br/>
+        from step1,username:#{user.username},password:#{user.password}<br/>
         <h:form>
             <h:outputLabel for="email">email:</h:outputLabel>
-            <h:inputText value="#{registerController.user.email}" id="email"/>
+            <h:inputText value="#{user.email}" id="email"/>
             
-            <h:commandButton value="next" action="#{registerController.step2()}"/>
+            <h:commandButton value="next" action="#{registerController.step2}"/>
         </h:form>
     </h:body>
 </html>
