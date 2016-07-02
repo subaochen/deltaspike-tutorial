@@ -13,15 +13,10 @@
 
 <h:body>
 <h1>Deltaspike scope examples</h1>
-<h:form>
-    <h:outputLabel for="username">用户名:</h:outputLabel>
-    <h:inputText value="#{registerController.user.username}" id="username"/>
-    
-    <h:outputLabel for="password">密码:</h:outputLabel>
-    <h:inputSecret value="#{registerController.user.password}" id="password"/>
-    
-    <h:commandButton value="next" action="#{registerController.step1()}"/>
-</h:form>
+
+username:<h:outputText value="#{registerController.user.username}"/><br/>
+password:<h:outputText value="#{registerController.user.password}"/><br/>
+email:   <h:outputText value="#{registerController.user.email}"/>
         
 </h:body>
 
