@@ -5,22 +5,16 @@
  */
 package cn.edu.sdut.r314;
 
-import java.io.Serializable;
-import javax.enterprise.context.RequestScoped;
-import javax.enterprise.context.SessionScoped;
-import javax.inject.Named;
-import org.apache.deltaspike.core.api.scope.WindowScoped;
-
 /**
  *
  * @author subaochen
  */
-@Named
-@WindowScoped
-public class User implements Serializable {
-    String username;
-    String password;
-    String email;
+public abstract class Register {
+    protected String username;
+    protected String password;
+    protected String email;
+    
+    protected long value = System.currentTimeMillis();
 
     public String getUsername() {
         return username;
@@ -46,4 +40,16 @@ public class User implements Serializable {
         this.email = email;
     }
     
+    
+    public String step1(){
+        return "step2";
+    }
+    
+    public String step2(){
+        return "confirm";
+    }
+    
+    public String confirm(){
+        return "";
+    }
 }

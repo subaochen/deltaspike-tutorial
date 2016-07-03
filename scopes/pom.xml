@@ -46,7 +46,7 @@
         <dependency>
             <groupId>org.apache.deltaspike.core</groupId>
             <artifactId>deltaspike-core-impl</artifactId>
-            <scope>compile</scope>
+            <scope>runtime</scope>
             <version>1.7.0</version>
         </dependency>
 
@@ -56,7 +56,15 @@
             <scope>compile</scope>
             <version>1.7.0</version>
         </dependency>
+        
+        <dependency>
+            <groupId>org.apache.deltaspike.modules</groupId>
+            <artifactId>deltaspike-jsf-module-impl</artifactId>
+            <scope>runtime</scope>
+            <version>1.7.0</version>
+        </dependency>
     </dependencies>
+
 
     <build>
         <finalName>${project.artifactId}</finalName>

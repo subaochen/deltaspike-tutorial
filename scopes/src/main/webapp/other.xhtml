@@ -13,15 +13,9 @@
 
 <h:body>
 <h1>Deltaspike scope examples</h1>
-
-username:<h:outputText value="#{registerController.register.username}"/><br/>
-password:<h:outputText value="#{registerController.register.password}"/><br/>
-email:   <h:outputText value="#{registerController.register.email}"/><br/>
-
-<h:link value="step2 page" outcome="/step2.xhtml"/><br/>
-<h:link value="index page" outcome="/index.xhtml"/><br/>
-<h:link value="other page" outcome="/other.xhtml"/><br/>
-        
+some other page not reference to registerController bean.
+<h:link value="index page" outcome="/index.xhtml"/>
+<h:link value="confirm page" outcome="/confirm.xhtml"/>
 </h:body>
 
 </html>

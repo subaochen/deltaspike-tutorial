@@ -5,10 +5,19 @@
               version="2.0">
     
     <navigation-rule>
-        <from-view-id>index.xhtml</from-view-id>
+        <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>step2</from-outcome>
-            <to-view-id>step2.xhtml</to-view-id>
+            <to-view-id>/step2.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/step2.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>confirm</from-outcome>
+            <to-view-id>/confirm.xhtml</to-view-id>
             <redirect />
         </navigation-case>
     </navigation-rule>
