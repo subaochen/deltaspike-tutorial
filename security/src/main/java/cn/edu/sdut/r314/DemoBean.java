@@ -42,6 +42,7 @@ public class DemoBean {
         return RootPages.Other.class;
     }
 
+    @UserLoggedIn
     public void toAdminPage() {
         viewNavigationHandler.navigateTo(AdminPages.Index.class);
     }

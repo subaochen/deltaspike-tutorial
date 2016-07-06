@@ -15,21 +15,18 @@
  */
 package cn.edu.sdut.r314.pages;
 
-import org.apache.deltaspike.core.api.config.view.DefaultErrorView;
 import org.apache.deltaspike.core.api.config.view.ViewConfig;
 import org.apache.deltaspike.jsf.api.config.view.Folder;
 import org.apache.deltaspike.jsf.api.config.view.View;
+import static org.apache.deltaspike.jsf.api.config.view.View.NavigationMode.REDIRECT;
 
 /**
  *
  * @author subaochen
  */
-@Folder(name="/")
-public interface RootPages extends ViewConfig {
-    public class Index implements RootPages{}
-    public class Other implements RootPages{}
-    
-    @View(name="error")
-    public class ErrorPage extends DefaultErrorView {}
+@View(navigation=REDIRECT)
+@Folder(name="/admin")
+public interface AdminPages extends ViewConfig{
+    public class Index implements AdminPages {}
     
 }
