@@ -1,3 +1,5 @@
-演示deltaspike/cdi/jsf的scope用法
+# 演示deltaspike如何控制页面的访问权限
 
-主要是@ViewScoped, @ViewAccessScoped，@ConversationScoped的区别
+
+
+

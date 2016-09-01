@@ -98,6 +98,13 @@
             <scope>compile</scope>
             <version>${picketlink.version}</version>
         </dependency>    
+        
+<dependency>
+    <groupId>javax.ejb</groupId>
+    <artifactId>javax.ejb-api</artifactId>
+    <version>3.2</version>
+</dependency>
+     
     </dependencies>
 
 
