@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>deltaspike-tutorial</groupId>
-    <artifactId>security</artifactId>
+    <artifactId>security-page-access-control</artifactId>
     <version>1.0.0</version>
     <packaging>war</packaging>
 
