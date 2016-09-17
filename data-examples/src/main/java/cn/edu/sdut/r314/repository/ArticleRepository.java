@@ -11,7 +11,7 @@ import org.apache.deltaspike.data.api.Repository;
 
 /**
  *
- * @author subaochen
+ * @author subaochen<subaochen@126.com>
  */
 @Repository
 public interface ArticleRepository extends EntityRepository<Article,Long>

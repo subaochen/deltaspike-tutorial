@@ -28,8 +28,6 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.persistence.EntityManager;
-import javax.transaction.Transactional;
 
 /**
  *
@@ -37,7 +35,6 @@ import javax.transaction.Transactional;
  */
 @Named
 @ViewScoped
-//@Transactional
 public class ArticleController implements Serializable
 {
 
@@ -83,7 +80,7 @@ public class ArticleController implements Serializable
 
     public String delete(Article article)
     {
-        articles.remove(article);
+        articles.attachAndRemove(article);
         facesContext.addMessage(null, new FacesMessage("article:" + article.getTitle() + " deleted"));
         return "deleted";
     }
