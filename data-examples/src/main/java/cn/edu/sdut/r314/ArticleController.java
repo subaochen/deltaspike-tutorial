@@ -18,6 +18,7 @@
  */
 package cn.edu.sdut.r314;
 
+import cn.edu.sdut.r314.repository.ArticleRepository;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -36,7 +37,7 @@ import javax.transaction.Transactional;
  */
 @Named
 @ViewScoped
-@Transactional
+//@Transactional
 public class ArticleController implements Serializable
 {
 
@@ -46,7 +47,7 @@ public class ArticleController implements Serializable
     private Logger log;
 
     @Inject
-    private EntityManager em;
+    private ArticleRepository articles;
     
     @Inject
     private FacesContext facesContext;
@@ -67,7 +68,7 @@ public class ArticleController implements Serializable
 
     public Article findArticleById(Long id)
     {
-        article = em.find(Article.class, id);
+        article = articles.findBy(id);
         return article;
     }
 
@@ -75,21 +76,21 @@ public class ArticleController implements Serializable
     public String persist()
     {
         article.setDate(new Date());
-        em.merge(this.article);
+        articles.save(article);
         facesContext.addMessage(null, new FacesMessage("article:" + article.getTitle() + " persisted"));
         return "persisted";
     }
 
     public String delete(Article article)
     {
-        em.remove(article);
+        articles.remove(article);
         facesContext.addMessage(null, new FacesMessage("article:" + article.getTitle() + " deleted"));
         return "deleted";
     }
 
     public List<Article> getAllArticles()
     {
-        return em.createQuery("from Article a order by a.id desc").getResultList();
+        return articles.findAll();
     }
     
     public void loadArticle() 

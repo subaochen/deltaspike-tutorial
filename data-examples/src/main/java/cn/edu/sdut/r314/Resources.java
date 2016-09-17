@@ -18,7 +18,6 @@
  */
 package cn.edu.sdut.r314;
 
-import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Default;
 import javax.enterprise.inject.Disposes;
@@ -28,9 +27,10 @@ import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
+import javax.transaction.TransactionScoped;
 
 // @TODO why ApplicatonScoped?
-@ApplicationScoped
+//@ApplicationScoped
 public class Resources
 {
 
@@ -39,7 +39,7 @@ public class Resources
 
     @Produces
     @Default
-    @RequestScoped
+    @TransactionScoped
     public EntityManager create()
     {
         return this.entityManagerFactory.createEntityManager();
