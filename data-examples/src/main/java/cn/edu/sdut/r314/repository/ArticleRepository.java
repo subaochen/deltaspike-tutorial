@@ -6,6 +6,8 @@
 package cn.edu.sdut.r314.repository;
 
 import cn.edu.sdut.r314.Article;
+import java.util.Date;
+import java.util.List;
 import org.apache.deltaspike.data.api.EntityRepository;
 import org.apache.deltaspike.data.api.Repository;
 
@@ -16,5 +18,6 @@ import org.apache.deltaspike.data.api.Repository;
 @Repository
 public interface ArticleRepository extends EntityRepository<Article,Long>
 {
-    
+    List<Article> findByTitleLike(String title);
+    List<Article> findByTitleLikeAndDateBetweenOrderByDateDesc(String title,Date begin,Date end);
 }

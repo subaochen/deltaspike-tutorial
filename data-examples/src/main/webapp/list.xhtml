@@ -23,18 +23,27 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 
     <h:head>
-        <title>Simple JPA  page</title>
+        <title>Deltaspike Data Module Demo</title>
     </h:head>
 
     <h:body>
         <h1>Article List</h1>
         <h:messages style="color:red"/>
-
         <h:form>
-            <h:dataTable value="#{articleController.allArticles}" var="article" border="1">
+            <p:panelGrid columns="2">
+                <p:outputLabel for="begin-date" value="begin date:"/>
+                <p:calendar id="begin-date" value="#{articleController.beginDate}"/>
+                <p:outputLabel for="end-date" value="end date:"/>
+                <p:calendar id="end-date" value="#{articleController.endDate}"/>
+                <p:outputLabel for="title" value="title:"/>
+                <h:inputText id="title" value="#{articleController.article.title}" size="10"/>            
+                <h:commandButton value="Search" accesskey="#{articleController.search()}"/>            
+            </p:panelGrid>
+            <h:dataTable value="#{articleController.articleList}" var="article" border="1">
                 <h:column>
                     <f:facet name="header">ID</f:facet>
                     <h:outputText value="#{article.id}"/>

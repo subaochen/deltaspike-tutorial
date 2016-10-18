@@ -20,8 +20,10 @@ package cn.edu.sdut.r314;
 
 import cn.edu.sdut.r314.repository.ArticleRepository;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ViewScoped;
@@ -45,13 +47,53 @@ public class ArticleController implements Serializable
 
     @Inject
     private ArticleRepository articles;
-    
+
     @Inject
     private FacesContext facesContext;
-    
-    @HttpParam("aid") 
+
+    @HttpParam("aid")
     @Inject
     private String aid; // article id
+
+    private List<Article> articleList = null;
+    private Date beginDate; // search by beginDate
+    private Date endDate; // search by endDate
+
+    public Date getBeginDate()
+    {
+        return beginDate;
+    }
+
+    public void setBeginDate(Date beginDate)
+    {
+        this.beginDate = beginDate;
+    }
+
+    public Date getEndDate()
+    {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate)
+    {
+        this.endDate = endDate;
+    }
+
+    public List<Article> getArticleList()
+    {
+        if (articleList != null)
+        {
+            return articleList;
+        } else
+        {
+            return getAllArticles();
+        }
+    }
+
+    public void setArticleList(List<Article> articleList)
+    {
+        this.articleList = articleList;
+    }
 
     public Article getArticle()
     {
@@ -69,7 +111,6 @@ public class ArticleController implements Serializable
         return article;
     }
 
-    
     public String persist()
     {
         article.setDate(new Date());
@@ -89,13 +130,30 @@ public class ArticleController implements Serializable
     {
         return articles.findAll();
     }
-    
-    public void loadArticle() 
+
+    public void loadArticle()
     {
         if (aid != null)
         {
             this.article = findArticleById(Long.valueOf(aid));
         }
     }
-    
+
+    public String search()
+    {
+        if (this.article.getTitle() != null)
+        {
+            log.log(Level.INFO, "title:{0},beginDate:{1},endDate:{2}", new Object[]
+            {
+                article.getTitle(), beginDate, endDate
+            });
+            if (beginDate != null && endDate != null)
+            {
+                articleList = articles.findByTitleLikeAndDateBetweenOrderByDateDesc("%" + this.article.getTitle() + "%", beginDate, endDate);
+            }
+        }
+        // reload current page
+        return null;
+    }
+
 }
